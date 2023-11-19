@@ -20,7 +20,7 @@ const page = () => {
   const [userDetail, setUserDetail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);list
   const [verifyUsername, setVerifyUsername] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();

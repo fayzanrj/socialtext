@@ -84,7 +84,7 @@ const List = ({ items, userId }) => {
           <BiRefresh size={"1.75rem"} />
         </button>
         <p className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-3xl uppercase">
-          Coudn't find anything
+          Coud not find anything
         </p>
       </div>
     );
