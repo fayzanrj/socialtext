@@ -14,7 +14,7 @@ const requestHeaders = {
   api_key: process.env.NEXT_PUBLIC_API_KEY,
 };
 
-const page = () => {
+const Page = () => {
   // STATES
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -173,4 +173,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
