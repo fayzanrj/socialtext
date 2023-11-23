@@ -52,7 +52,7 @@ export const POST = async (req) => {
 
     // DEPOPULATING PASSWORD
     const userWithDetails = await User.findById(user.id).select(
-      "email username icon isVerified"
+      "-password -createdAt -updatedAt"
     );
 
     // SENDNG DATA

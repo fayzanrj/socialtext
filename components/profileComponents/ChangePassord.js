@@ -11,7 +11,7 @@ const ChangePassord = ({ userId }) => {
       )}
         <button
           onClick={() => setIsModalOpen(true)}
-          className="bg-black text-white my-2 p-2 rounded-lg mt-10"
+          className="bg-black text-white my-2 p-2 rounded-lg mt-10 z-40"
         >
           Change password
         </button>

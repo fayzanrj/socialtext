@@ -102,7 +102,7 @@ const IconSelectionModal = ({
     "https://cdn-icons-png.flaticon.com/128/706/706819.png",
   ];
   return (
-    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30 w-[100%] md:w-[85%] lg:w-[60%]  min-h-[70%] mt-3 sm:mt-0 shadow-2xl drop-shadow-lg  bg-white">
+    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[100%] md:w-[85%] lg:w-[60%]  min-h-[70%] mt-3 sm:mt-0 shadow-2xl drop-shadow-lg  bg-white z-50">
       <div className="h-[40%] p-4 text-center overflow-hidden ">
         Selected Icon :{" "}
         <Image

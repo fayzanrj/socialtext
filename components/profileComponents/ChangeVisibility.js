@@ -30,7 +30,7 @@ const ChangeVisibility = ({ isUserPrivate, userId }) => {
     }
   };
   return (
-    <div className="w- text-center m-auto">
+    <div className="w- text-center m-auto  z-10">
       <button
         className="bg-black w-[90%] text-white my-2 p-2  h-10 rounded-lg relative sm:w-full sm:px-0 md:p-2 md:w-60"
         onClick={handleChangeVisibility}
