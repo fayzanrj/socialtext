@@ -15,7 +15,7 @@ const Page = async ({ params }) => {
   );
   
   const res = await response.json();
-  const searched = await res;
+  const searched = await res.users;
   return (
     <div className="block sm:pl-80 h-[100svh]">
       <SearchUserInput userId={params.userId} />

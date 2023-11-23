@@ -20,6 +20,9 @@ export const GET = async (request, { params }) => {
     const users = await User.find(query, "username email icon hasBlocked");
 
     return NextResponse.json({ users }, { status: 200 });
+
+
+    
   } catch (error) {
     console.error(error);
     return NextResponse.json({ msg: "Internal Server Error" }, { status: 500 });
