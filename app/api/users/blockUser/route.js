@@ -44,9 +44,7 @@ export const PUT = async (req) => {
     // ADDING USER ID IN THE DB OF THE USER WHO BLOCKED
     const updatedUser = await User.findByIdAndUpdate(blockedBy, {
       $addToSet: { hasBlocked: blocked },
-      $pull: { friends: blocked },
-      $pull: { hasRequested: blocked },
-      $pull: { requestedBy: blocked },
+      $pull: { friends: blocked , hasRequested: blocked ,requestedBy: blocked},
     });
 
     if (!updatedUser) {
@@ -59,9 +57,7 @@ export const PUT = async (req) => {
     // ADDING USER IN THE DB OF THE USER WHO HAS BEEN BLOCKED
     const userBlocked = await User.findByIdAndUpdate(blocked, {
       $addToSet: { blockedBy: blockedBy },
-      $pull: { friends: blockedBy },
-      $pull: { hasRequested: blockedBy },
-      $pull: { requestedBy: blockedBy },
+      $pull: { friends: blockedBy, hasRequested: blockedBy ,requestedBy: blockedBy },
     });
 
     if (!userBlocked) {
