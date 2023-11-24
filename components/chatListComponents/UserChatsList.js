@@ -123,7 +123,7 @@ const UserChatsList = ({ userId, allChats }) => {
 
   const handleUpdateChatName = (chat) => {
     setChats((prevChat) => {
-      const updatedList = [...prevChat]; // Create a copy of the array
+      const updatedList = [...prevChat]; // Creating a copy of the array
       const index = updatedList.findIndex((item) => item._id === chat.chatId);
 
       if (index !== -1) {
@@ -134,7 +134,7 @@ const UserChatsList = ({ userId, allChats }) => {
         updatedList.unshift(newChatItem[0]);
       }
 
-      return updatedList; // No need to create a new array
+      return updatedList; // returning new array
     });
   };
   // USEFFECT TO RUN fetchAllChats WHEN COMPONENT IS MOUNTED

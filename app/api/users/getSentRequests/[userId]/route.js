@@ -27,7 +27,7 @@ export const GET = async (req, { params }) => {
     const user = await User.findById(userId).populate({
       path: "hasRequested",
       select: "email icon username",
-    });
+    }).sort({ updatedAt: -1 });;
 
     if (!user) {
       return NextResponse.json(
