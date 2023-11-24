@@ -45,6 +45,8 @@ export const PUT = async (req) => {
     const updatedUser = await User.findByIdAndUpdate(blockedBy, {
       $addToSet: { hasBlocked: blocked },
       $pull: { friends: blocked },
+      $pull: { hasRequested: blocked },
+      $pull: { requestedBy: blocked },
     });
 
     if (!updatedUser) {
@@ -58,6 +60,8 @@ export const PUT = async (req) => {
     const userBlocked = await User.findByIdAndUpdate(blocked, {
       $addToSet: { blockedBy: blockedBy },
       $pull: { friends: blockedBy },
+      $pull: { hasRequested: blockedBy },
+      $pull: { requestedBy: blockedBy },
     });
 
     if (!userBlocked) {
