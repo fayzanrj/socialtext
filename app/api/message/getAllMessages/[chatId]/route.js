@@ -30,8 +30,7 @@ export const GET = async (request, { params }) => {
       "sender"
     );
     const chat = await Chat.findById(params.chatId).populate(
-      "chatUsers",
-      "-password"
+      "chatUsers -password"
     );
 
     return NextResponse.json(
