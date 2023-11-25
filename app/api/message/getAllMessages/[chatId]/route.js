@@ -26,9 +26,11 @@ export const GET = async (request, { params }) => {
       return NextResponse.json({ msg: "Incomplete data" }, { status: 409 });
     }
 
+    console.log(params.chatId)
     const msgs = await Message.find({ chatId: params.chatId }).populate(
       "sender"
     );
+    console.log(msgs)
     // const chat = await Chat.findById(params.chatId).populate(
     //   "chatUsers -password"
     // );
@@ -40,7 +42,7 @@ export const GET = async (request, { params }) => {
       { status: 200 }
     );
   } catch (error) {
-    console.log(error);
+    console.log(error.messageu);
     return NextResponse.json(
       {
         msg: "Internal server error",
