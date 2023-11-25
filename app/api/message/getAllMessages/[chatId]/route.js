@@ -29,13 +29,12 @@ export const GET = async (request, { params }) => {
     const msgs = await Message.find({ chatId: params.chatId }).populate(
       "sender"
     );
-    const chat = await Chat.findById(params.chatId).populate(
-      "chatUsers -password"
-    );
+    // const chat = await Chat.findById(params.chatId).populate(
+    //   "chatUsers -password"
+    // );
 
     return NextResponse.json(
       {
-        chat: chat,
         messages: msgs,
       },
       { status: 200 }
