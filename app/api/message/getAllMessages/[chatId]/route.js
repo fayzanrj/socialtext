@@ -3,7 +3,7 @@ import Message from "@/models/msgModel";
 import { connectToDB } from "@/utilities/db";
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
-import User from '@/models/userModel'
+import User from "@/models/userModel";
 
 export const GET = async (request, { params }) => {
   try {
@@ -31,10 +31,15 @@ export const GET = async (request, { params }) => {
       chatId: params.chatId,
     })
       .populate("sender", "username icon")
-      .populate("readBy", "username");
-    // const chat = await Chat.findById(params.chatId).populate(
-    //   "chatUsers -password"
-    // );
+      .populate("readBy", "username")
+      .populate({
+        path: "isReplyTo",
+        select: "content sender",
+        populate: {
+          path: "sender",
+          select: "username email icon",
+        },
+      });
 
     return NextResponse.json(
       {
