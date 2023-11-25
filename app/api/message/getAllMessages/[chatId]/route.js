@@ -3,6 +3,7 @@ import Message from "@/models/msgModel";
 import { connectToDB } from "@/utilities/db";
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
+import User from '@/models/userModel'
 
 export const GET = async (request, { params }) => {
   try {
@@ -26,13 +27,11 @@ export const GET = async (request, { params }) => {
       return NextResponse.json({ msg: "Incomplete data" }, { status: 409 });
     }
 
-    console.log(params.chatId);
     const msgs = await Message.find({
       chatId: params.chatId,
     })
       .populate("sender", "username icon")
       .populate("readBy", "username");
-    console.log(msgs);
     // const chat = await Chat.findById(params.chatId).populate(
     //   "chatUsers -password"
     // );
@@ -44,7 +43,7 @@ export const GET = async (request, { params }) => {
       { status: 200 }
     );
   } catch (error) {
-    console.log(error.messageu);
+    console.log(error.message);
     return NextResponse.json(
       {
         msg: "Internal server error",
