@@ -76,8 +76,8 @@ export const POST = async (req) => {
     }
 
     const chatWithDetails = await Chat.findById(chat._id)
-      .populate("chatUsers", "-password")
-      .populate("groupAdmin", "-password")
+      .populate("chatUsers", "email username")
+      .populate("groupAdmin", "email username")
       .populate({
         path: "latestMessage",
         populate: {
