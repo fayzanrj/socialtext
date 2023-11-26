@@ -40,8 +40,8 @@ export const POST = async (req) => {
 
     if (chatExists) {
       const chatWithDetails = await Chat.findById(chatExists._id)
-      .populate("chatUsers", "email username")
-      .populate("groupAdmin", "email username")
+      .populate("chatUsers", "email username icon")
+      .populate("groupAdmin", "email username icon")
       .populate({
         path: "latestMessage",
         populate: {
@@ -86,8 +86,8 @@ export const POST = async (req) => {
     }
 
     const chatWithDetails = await Chat.findById(chat._id)
-      .populate("chatUsers", "email username")
-      .populate("groupAdmin", "email username")
+      .populate("chatUsers", "email username icon")
+      .populate("groupAdmin", "email username icon")
       .populate({
         path: "latestMessage",
         populate: {
