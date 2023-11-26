@@ -45,8 +45,8 @@ export const POST = async (req) => {
     }
 
     const chatWithDetails = await Chat.findById(chat._id)
-      .populate("chatUsers", "-password")
-      .populate("groupAdmin", "-password")
+      .populate("chatUsers", "email username icon")
+      .populate("groupAdmin", "email username icon")
       .populate({
         path: "latestMessage",
         populate: {
@@ -71,16 +71,14 @@ export const POST = async (req) => {
 
     await UpdateChatsInUI(chat.chatUsers, chatWithDetails);
 
-    return NextResponse.json({
-      status: "success",
-      msg: "Chat created",
-      //   chat: chat,
-    });
+    return NextResponse.json({ chat: chatWithDetails }, { status: 200 });
   } catch (error) {
     console.log(error);
-    return NextResponse.json({
-      status: "failed",
-      msg: "Internal server error",
-    });
+    return NextResponse.json(
+      {
+        msg: "Internal server error",
+      },
+      { status: 500 }
+    );
   }
 };
