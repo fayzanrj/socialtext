@@ -104,7 +104,7 @@ export const POST = async (req) => {
 
     return NextResponse.json(
       {
-        chat: chat,
+        chat: chatWithDetails,
       },
       { status: 200 }
     );
