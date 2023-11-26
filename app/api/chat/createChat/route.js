@@ -39,7 +39,17 @@ export const POST = async (req) => {
     });
 
     if (chatExists) {
-      return NextResponse.json({ chat: chatExists }, { status: 200 });
+      const chatWithDetails = await Chat.findById(chatExists._id)
+      .populate("chatUsers", "email username")
+      .populate("groupAdmin", "email username")
+      .populate({
+        path: "latestMessage",
+        populate: {
+          path: "sender",
+          select: "username email",
+        },
+      });
+      return NextResponse.json({ chat: chatWithDetails }, { status: 200 });
     }
 
     // CREATE CHAT ROOM
