@@ -31,13 +31,14 @@ export const POST = async (req) => {
       chatId: chat._id,
       readBy: [users[0]],
       isChatUpdate: true,
+      msgType : "text"
     });
 
     const updatedChat = await Chat.findByIdAndUpdate(chat._id, {
       latestMessage: message,
     });
 
-    if (!chat) {
+    if (!chat || !updatedChat) {
       return NextResponse.json({
         status: "failed",
         msg: "Internal server error",
