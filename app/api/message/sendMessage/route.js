@@ -45,7 +45,8 @@ export const POST = async (request) => {
     }
     await connectToDB();
 
-    const { msg, chatId, sendBy, chatRoom, msgType, isReplyTo } = await request.json();
+    const { msg, chatId, sendBy, chatRoom, msgType, isReplyTo } =
+      await request.json();
 
     // IF DATA DOESNT COME THROUGH
     if (!msg || !chatId || !sendBy || !chatRoom || !msgType) {
@@ -67,10 +68,16 @@ export const POST = async (request) => {
 
     const message = await Message.create(messageData);
 
-    const messageWithDetails = await Message.findById(message._id).populate(
-      "sender",
-      "username email icon"
-    );
+    const messageWithDetails = await Message.findById(message._id)
+      .populate("sender", "username email icon")
+      .populate({
+        path: "isReplyTo",
+        select: "content sender",
+        populate: {
+          path: "sender",
+          select: "username email icon",
+        },
+      });
 
     await pusherServer.trigger(
       chatRoom,

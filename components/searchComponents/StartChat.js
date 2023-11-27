@@ -7,7 +7,7 @@ import Loader from "../Loader";
 const StartChat = ({ userId, searchedUserId }) => {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
-  const handleClick = async () => {
+  const handleClick = async () => { 
     setIsLoading(true);
     try {
       const users = [userId, searchedUserId];
