@@ -34,7 +34,7 @@ export const GET = async (request, { params }) => {
       .populate("readBy", "username")
       .populate({
         path: "isReplyTo",
-        select: "content sender",
+        select: "content sender msgType",
         populate: {
           path: "sender",
           select: "username email icon",
